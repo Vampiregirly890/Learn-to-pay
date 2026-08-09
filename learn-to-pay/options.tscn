@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dq4c5myjwfmc8"]
+
+[ext_resource type="Script" uid="uid://bgxn1scuonl2x" path="res://options.gd" id="1_5v8ap"]
+
+[node name="Options" type="Control" unique_id=1798844153]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5v8ap")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=699652491]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -3.0
+offset_right = 486.0
+offset_bottom = 305.0
+color = Color(0.29411766, 0.5372549, 0.87058824, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1521174496]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 45.0
+offset_right = 299.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "OPCIONES
+
+VOLUMEN"
+
+[node name="HSlider" type="HSlider" parent="." unique_id=714529705]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.046000004
+anchor_top = 0.083000004
+anchor_right = 0.046000004
+anchor_bottom = 0.083000004
+offset_left = 77.007996
+offset_top = 67.215996
+offset_right = 279.008
+offset_bottom = 98.215996
+value = 50.0
+
+[node name="Back button" type="Button" parent="." unique_id=575085786]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.11000001
+offset_left = 133.0
+offset_top = 183.0
+offset_right = 208.28
+offset_bottom = 214.0
+text = "VOLVER"
+
+[connection signal="pressed" from="Back button" to="." method="_on_back_button_pressed"]

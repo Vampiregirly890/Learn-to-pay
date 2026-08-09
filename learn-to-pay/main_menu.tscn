@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://ckn2c6vgnuylf"]
+
+[ext_resource type="Script" uid="uid://cu0ffwlrtre57" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://b5bs43li5jh2j" path="res://WhatsApp Image 2026-08-09 at 15.57.54.jpeg" id="2_7vrkn"]
+
+[sub_resource type="SystemFont" id="SystemFont_se8ut"]
+
+[node name="MainMenu" type="Control" unique_id=1499277954]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vrkn")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1593202721]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.08400001
+anchor_top = -0.16000001
+anchor_right = 0.32900003
+anchor_bottom = -0.157
+offset_left = 98.768005
+offset_top = 110.68001
+offset_right = 774.99194
+offset_bottom = 756.736
+texture = ExtResource("2_7vrkn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background" unique_id=910860864]
+layout_mode = 0
+offset_left = 681.0
+offset_top = 154.0
+offset_right = 923.0
+offset_bottom = 209.0
+
+[node name="Title" type="Label" parent="Background/VBoxContainer" unique_id=1957485151]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_se8ut")
+theme_override_font_sizes/font_size = 40
+text = "Learn to pay"
+horizontal_alignment = 1
+
+[node name="Play button" type="Button" parent="Background/VBoxContainer/Title" unique_id=2076076539]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 7.28
+anchor_right = 1.0
+anchor_bottom = 7.28
+offset_left = -278.0
+offset_top = -252.40002
+offset_right = 5.0
+offset_bottom = -188.40002
+text = "JUGAR"
+
+[node name="options button" type="Button" parent="Background/VBoxContainer/Title/Play button" unique_id=1128826404]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 72.0
+offset_right = 282.0
+offset_bottom = 130.0
+text = "OPCIONES"
+
+[node name="Exit button" type="Button" parent="Background/VBoxContainer/Title/Play button/options button" unique_id=559245428]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.229
+anchor_right = -2.229
+offset_left = 622.89105
+offset_top = 65.0
+offset_right = 897.89105
+offset_bottom = 126.0
+text = "SALIR"
+
+[connection signal="pressed" from="Background/VBoxContainer/Title/Play button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/Title/Play button/options button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/Title/Play button/options button/Exit button" to="." method="_on_exit_button_pressed"]
