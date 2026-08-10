@@ -1,0 +1,265 @@
+[gd_scene load_steps=6 format=3 uid="uid://plaza_ltp"]
+
+[ext_resource type="Script" path="res://scripts/plaza.gd" id="1_plaza"]
+[ext_resource type="PackedScene" uid="uid://player_ltp" path="res://scenes/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://building_ltp" path="res://scenes/building.tscn" id="3_building"]
+
+[sub_resource type="RectangleShape2D" id="GroundShape"]
+size = Vector2(3200, 80)
+
+[sub_resource type="RectangleShape2D" id="WallV"]
+size = Vector2(40, 800)
+
+[node name="Plaza" type="Node2D"]
+script = ExtResource("1_plaza")
+
+[node name="Sky" type="Polygon2D" parent="."]
+z_index = -3
+color = Color(0.45, 0.72, 0.82, 1)
+polygon = PackedVector2Array(-1600, -700, 1600, -700, 1600, 200, -1600, 200)
+
+[node name="Hills" type="Polygon2D" parent="."]
+z_index = -2
+color = Color(0.28, 0.55, 0.42, 1)
+polygon = PackedVector2Array(-1600, 40, -1100, -40, -700, 20, -300, -60, 100, 10, 500, -50, 900, 15, 1300, -30, 1600, 40, 1600, 200, -1600, 200)
+
+[node name="Road" type="Polygon2D" parent="."]
+z_index = -1
+color = Color(0.22, 0.25, 0.28, 1)
+polygon = PackedVector2Array(-1600, 0, 1600, 0, 1600, 40, -1600, 40)
+
+[node name="GroundVisual" type="Polygon2D" parent="."]
+z_index = -1
+color = Color(0.33, 0.26, 0.18, 1)
+polygon = PackedVector2Array(-1600, 40, 1600, 40, 1600, 400, -1600, 400)
+
+[node name="StreetLabel" type="Label" parent="."]
+offset_left = -60.0
+offset_top = -30.0
+offset_right = 60.0
+offset_bottom = 0.0
+theme_override_colors/font_color = Color(0.95, 0.95, 0.9, 0.7)
+theme_override_font_sizes/font_size = 14
+text = "CALLE PRINCIPAL"
+horizontal_alignment = 1
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="World"]
+position = Vector2(0, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Ground"]
+shape = SubResource("GroundShape")
+
+[node name="WallLeft" type="StaticBody2D" parent="World"]
+position = Vector2(-1580, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/WallLeft"]
+shape = SubResource("WallV")
+
+[node name="WallRight" type="StaticBody2D" parent="World"]
+position = Vector2(1580, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/WallRight"]
+shape = SubResource("WallV")
+
+[node name="House" parent="." instance=ExtResource("3_building")]
+position = Vector2(-900, 40)
+building_id = "house"
+display_name = "Casa"
+building_color = Color(0.35, 0.55, 0.85, 1)
+
+[node name="Work" parent="." instance=ExtResource("3_building")]
+position = Vector2(-450, 40)
+building_id = "work"
+display_name = "Trabajo"
+building_color = Color(0.9, 0.55, 0.2, 1)
+
+[node name="Payments" parent="." instance=ExtResource("3_building")]
+position = Vector2(0, 40)
+building_id = "payments"
+display_name = "Pagos"
+building_color = Color(0.75, 0.35, 0.4, 1)
+
+[node name="Shop" parent="." instance=ExtResource("3_building")]
+position = Vector2(450, 40)
+building_id = "shop"
+display_name = "Tienda"
+building_color = Color(0.7, 0.5, 0.85, 1)
+
+[node name="Bank" parent="." instance=ExtResource("3_building")]
+position = Vector2(900, 40)
+building_id = "bank"
+display_name = "Banco"
+building_color = Color(0.24, 0.75, 0.55, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+unique_name_in_owner = true
+position = Vector2(-780, 40)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="PanelContainer" parent="UI"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = -16.0
+offset_bottom = 110.0
+grow_horizontal = 2
+
+[node name="HudMargin" type="MarginContainer" parent="UI/HUD"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="HudVBox" type="VBoxContainer" parent="UI/HUD/HudMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HudRow" type="HBoxContainer" parent="UI/HUD/HudMargin/HudVBox"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="WeekLabel" type="Label" parent="UI/HUD/HudMargin/HudVBox/HudRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Semana 1 / 4"
+
+[node name="MoneyLabel" type="Label" parent="UI/HUD/HudMargin/HudVBox/HudRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Dinero: $400"
+horizontal_alignment = 1
+
+[node name="DebtLabel" type="Label" parent="UI/HUD/HudMargin/HudVBox/HudRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.64, 0.38, 1)
+theme_override_font_sizes/font_size = 16
+text = "Deuda: $0"
+horizontal_alignment = 2
+
+[node name="SavingsLabel" type="Label" parent="UI/HUD/HudMargin/HudVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24, 0.86, 0.59, 1)
+theme_override_font_sizes/font_size = 14
+text = "Ahorro depto: $0 / $2.500"
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/HUD/HudMargin/HudVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+show_percentage = false
+
+[node name="HintLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -380.0
+offset_top = -40.0
+offset_right = 380.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.95, 0.98, 0.96, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "A/D caminar · Espacio/W saltar · E / Enter entrar a edificios"
+horizontal_alignment = 1
+
+[node name="DecisionPanel" type="PanelContainer" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -260.0
+offset_right = 420.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="UI/DecisionPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="HBox" type="HBoxContainer" parent="UI/DecisionPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Left" type="VBoxContainer" parent="UI/DecisionPanel/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.4
+theme_override_constants/separation = 10
+
+[node name="PhaseTitle" type="Label" parent="UI/DecisionPanel/Margin/HBox/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24, 0.86, 0.59, 1)
+theme_override_font_sizes/font_size = 26
+text = "Título"
+
+[node name="PhaseBody" type="RichTextLabel" parent="UI/DecisionPanel/Margin/HBox/Left"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = false
+scroll_active = true
+theme_override_font_sizes/normal_font_size = 16
+text = "Cuerpo"
+
+[node name="TipPanel" type="PanelContainer" parent="UI/DecisionPanel/Margin/HBox/Left"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="TipMargin" type="MarginContainer" parent="UI/DecisionPanel/Margin/HBox/Left/TipPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="TipLabel" type="Label" parent="UI/DecisionPanel/Margin/HBox/Left/TipPanel/TipMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Tip"
+autowrap_mode = 3
+
+[node name="Right" type="VBoxContainer" parent="UI/DecisionPanel/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="ActionsTitle" type="Label" parent="UI/DecisionPanel/Margin/HBox/Right"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Acciones"
+
+[node name="Choices" type="VBoxContainer" parent="UI/DecisionPanel/Margin/HBox/Right"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
