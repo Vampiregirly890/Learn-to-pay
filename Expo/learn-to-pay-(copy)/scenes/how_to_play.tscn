@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://how_to_play_ltp"]
+
+[ext_resource type="Script" path="res://scripts/how_to_play.gd" id="1_how"]
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_how")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.16, 0.18, 1)
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -280.0
+offset_right = 420.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24, 0.86, 0.59, 1)
+theme_override_font_sizes/font_size = 32
+text = "Cómo jugar"
+horizontal_alignment = 1
+
+[node name="Body" type="RichTextLabel" parent="Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+theme_override_font_sizes/normal_font_size = 17
+text = "En [b]4 semanas[/b] debes juntar el [b]depósito de tu apartamento[/b].
+
+Muévete de lado con [b]A/D[/b], salta con [b]Espacio[/b] y entra a edificios con [b]E / Enter[/b]:
+
+• [b]Casa[/b] — duerme y pasa de semana
+• [b]Trabajo[/b] — elige empleo y horas extra
+• [b]Pagos[/b] — arriendo, luz, agua e imprevistos
+• [b]Tienda[/b] — comida y transporte
+• [b]Banco[/b] — ahorra para el apartamento
+
+El [b]orden es libre[/b] y cambia el resultado: si ahorras antes de cobrar, tendrás menos; si duermes sin pagar, crece la deuda.
+
+[color=#3DDC97]Prioriza lo esencial. Evita deudas. Ahorra con constancia.[/color]"
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="BackButton" type="Button" parent="Panel/Margin/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 44)
+layout_mode = 2
+text = "Volver"
+
+[node name="StartButton" type="Button" parent="Panel/Margin/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 44)
+layout_mode = 2
+text = "Empezar"

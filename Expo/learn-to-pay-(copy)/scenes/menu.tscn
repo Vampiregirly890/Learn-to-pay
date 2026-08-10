@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://bad56c458oup5"]
+
+[ext_resource type="Script" uid="uid://dg58e2n0o5jgu" path="res://scripts/menu.gd" id="1_menu"]
+[ext_resource type="Texture2D" uid="uid://dqpg6q565h13l" path="res://scenes/WhatsApp Image 2026-08-09 at 15.57.54.jpeg" id="2_vjb58"]
+
+[node name="Menu" type="Control" unique_id=1043598785]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="WhatsAppImage20260809At15_57_54" type="Sprite2D" parent="." unique_id=231040282]
+position = Vector2(642, 364)
+scale = Vector2(1.1076388, 1.0925926)
+texture = ExtResource("2_vjb58")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1424338604]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.16, 0.18, 1)
+
+[node name="AccentTop" type="ColorRect" parent="." unique_id=26381426]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+color = Color(0.24, 0.86, 0.59, 1)
+
+[node name="Center" type="VBoxContainer" parent="." unique_id=392364201]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 26.0
+offset_top = -221.0
+offset_right = 586.0
+offset_bottom = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="Brand" type="Label" parent="Center" unique_id=1240021322]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.99215686, 0.8235294, 0.93333334, 1)
+theme_override_font_sizes/font_size = 52
+text = "Learn to Pay"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Center" unique_id=633802931]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.93, 0.94, 1)
+theme_override_font_sizes/font_size = 18
+text = "Aprende finanzas jugando · Vista de lado · Nivel 1"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Spacer" type="Control" parent="Center" unique_id=1447059461]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Center" unique_id=817098008]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Jugar"
+
+[node name="HowButton" type="Button" parent="Center" unique_id=1899241836]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Cómo jugar"
+
+[node name="QuitButton" type="Button" parent="Center" unique_id=549181143]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Salir"
+
+[node name="Footer" type="Label" parent="." unique_id=1812258531]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -48.0
+offset_right = 300.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.55, 0.7, 0.72, 1)
+theme_override_font_sizes/font_size = 14
+text = "Prototipo educativo · Educación financiera básica"
+horizontal_alignment = 1
